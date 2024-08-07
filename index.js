@@ -14,7 +14,9 @@ require("dotenv").config({
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => [res.send("Hi there from socket io server")]);
+app.get("/", (req, res) => {
+  res.send("Hi there from socket io server");
+});
 
 let users = [];
 
@@ -65,7 +67,7 @@ io.on("connection", (socket) => {
     if (!messages[receiverId]) {
       messages[receiverId] = [message];
     } else {
-      messages[receiverId].push[message];
+      messages[receiverId].push(message);
     }
 
     // send the message to the receiver
